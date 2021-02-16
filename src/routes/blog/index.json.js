@@ -1,16 +1,14 @@
-import posts from './_posts.js';
+import fetch from 'isomorphic-unfetch';
 
-const contents = JSON.stringify(posts.map(post => {
-	return {
-		title: post.title,
-		slug: post.slug
-	};
-}));
-
-export function get(req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'application/json'
-	});
-
-	res.end(contents);
+export async function get(_, res) {
+  fetch(`https://nytechblog.microcms.io/api/v1/blog/`, {
+    headers: { "X-API-KEY" : process.env.API_KEY }
+  })
+    .then(res => res.json())
+    .then(json => {
+      res.writeHead(200, {
+          'Content-Type': 'application/json'
+      });
+      res.end(JSON.stringify(json))
+    });
 }
