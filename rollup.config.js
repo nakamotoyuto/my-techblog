@@ -17,6 +17,14 @@ const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 dotenv.config();
 const apiKey = process.env.API_KEY
+const preprocess = sveltePreprocess({
+  scss: {
+    includePaths: ['src'],
+  },
+  postcss: {
+    plugins: [require('autoprefixer')],
+  },
+});
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
@@ -35,11 +43,11 @@ export default {
 				'process.env.API_KEY': JSON.stringify(apiKey)
 			}),
 			svelte({
-				preprocess: sveltePreprocess({ sourceMap: dev }),
+				preprocess,
 				compilerOptions: {
 					dev,
 					hydratable: true
-				}
+				},
 			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
@@ -88,7 +96,7 @@ export default {
 				'process.env.API_KEY': JSON.stringify(apiKey)
 			}),
 			svelte({
-				preprocess: sveltePreprocess({ sourceMap: dev }),
+				preprocess,
 				compilerOptions: {
 					dev,
 					generate: 'ssr',
