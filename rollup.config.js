@@ -10,7 +10,8 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import postcss from "rollup-plugin-postcss";
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -59,6 +60,19 @@ export default {
 			}),
 			commonjs(),
 			typescript({ sourceMap: dev }),
+			postcss({
+				extensions: ['.scss', '.sass'],
+				extract: false,
+				minimize: true,
+				use: [
+					['sass', {
+						includePaths: [
+							'./src/theme',
+							'./node_modules'
+						]
+					}]
+				]
+			}),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -113,7 +127,20 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
-			typescript({ sourceMap: dev })
+			typescript({ sourceMap: dev }),
+			postcss({
+				extensions: ['.scss', '.sass'],
+				extract: false,
+				minimize: true,
+				use: [
+					['sass', {
+						includePaths: [
+							'./src/theme',
+							'./node_modules'
+						]
+					}]
+				]
+			}),
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 
