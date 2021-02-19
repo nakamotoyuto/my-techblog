@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
   import Button from '@smui/button';
+  import Card, {Content, Media, MediaContent} from '@smui/card';
   export function preload() {
     return this.fetch('blog.json').then(res => res.json())
   }
@@ -24,6 +25,19 @@
 <Button on:click={() => alert('Clicked!')}>Just a Button</Button>
 <ul>
   {#each contents as content}
-    <li><a rel="prefetch" href="blog/{content.id}">{content.title}</a></li>
+    <li><a rel="prefetch" href="blog/{content.id}">
+      <div class="card-container">
+        <Card style="width: 320px;">
+          <Media class="card-media-16x9" aspectRatio="16x9">
+            <MediaContent>
+              <h2 class="mdc-typography--headline6" style="color: #fff; position: absolute; bottom: 16px; left: 16px; margin: 0;">A card with 16x9 media.</h2>
+            </MediaContent>
+          </Media>
+          <Content style="color: #888;">
+            <h3>{content.title}</h3>
+          </Content>
+        </Card>
+      </div>
+      </a></li>
   {/each}
 </ul>
