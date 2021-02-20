@@ -1,5 +1,4 @@
 <script context="module" lang="ts">
-	import Card, {Content, Media, MediaContent} from '@smui/card';
   export function preload({ params }) {
     return this.fetch(`blog/${params.slug}.json`)
       .then(res => res.json())
@@ -50,18 +49,6 @@
 <svelte:head>
 	<title>{post.title}</title>
 </svelte:head>
-<div class="card-container">
-	<Card style="width: 320px;">
-		<Media class="card-media-16x9" aspectRatio="16x9">
-			<MediaContent>
-				<h2 class="mdc-typography--headline6" style="color: #fff; position: absolute; bottom: 16px; left: 16px; margin: 0;">A card with 16x9 media.</h2>
-			</MediaContent>
-		</Media>
-		<Content style="color: #888;">
-			<h3>{post.title}</h3>
-		</Content>
-	</Card>
-</div>
 
 <div class="content">
 	{@html post.html}
