@@ -12,10 +12,13 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
+	.main{
+		padding: 40px 20px;
+	}
 </style>
 
 <Nav {segment}/>
 
-<main>
+<main class="main">
 	<slot></slot>
 </main>
