@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Nav from '../components/Nav.svelte';
+	import Header from '../components/Header.svelte'
 
-	export let segment: string;
 </script>
 
 <style>
@@ -17,7 +16,7 @@
 	}
 </style>
 
-<Nav {segment}/>
+<Header />
 
 <main class="main">
 	<slot></slot>
