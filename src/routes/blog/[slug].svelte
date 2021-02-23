@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-  export let post: { id: string; title: string, html: HTMLElement };
+  export let post: { id: string; title: string, updatedAt: string,html: HTMLElement };
 </script>
 
 <style>
@@ -44,12 +44,20 @@
 	.content :global(li) {
 		margin: 0 0 0.5em 0;
 	}
+
+	.content__ttl{
+		padding-bottom: 10px;
+		font-size: 27px;
+		border-bottom:1px solid black;
+	}
 </style>
 
 <svelte:head>
-	<title>{post.title}</title>
+	<title>mytechblog|{post.title}</title>
 </svelte:head>
 
 <div class="content">
+	<h2 class="content__ttl">{post.title}</h2>
+	<p class="content__updatedAt">{post.updatedAt}</p>
 	{@html post.html}
 </div>

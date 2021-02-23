@@ -6,7 +6,7 @@
 </script>
 
 <script lang="ts">
-  export let contents: { id: string; title: string, html: HTMLElement }[];
+  export let contents: { id: string; title: string, createdAt: string,html: HTMLElement }[];
 </script>
 
 <style lang="scss">
@@ -47,7 +47,7 @@
             <div class="card__content">
               <img class="card__img" src="https://i.gzn.jp/img/2018/01/15/google-gorilla-ban/00.jpg" alt="記事タイトル"/>
               <h3>{content.title}</h3>
-              <time>2021/02/22</time>
+              <time>{content.createdAt}</time>
             </div>
           </Content>
         </Card>
