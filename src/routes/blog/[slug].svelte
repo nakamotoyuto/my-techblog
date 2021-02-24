@@ -57,7 +57,8 @@
 </svelte:head>
 
 <div class="content">
+	{post}
 	<h2 class="content__ttl">{post.title}</h2>
 	<p class="content__updatedAt">{post.updatedAt}</p>
-	{@html post.html}
+	{@html post.html[0].html}
 </div>
