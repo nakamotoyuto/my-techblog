@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-  export let post: { id: string; title: string, updatedAt: string,html: HTMLElement };
+  export let post: { id: string; title: string, updatedAt: string, html: HTMLElement };
 </script>
 
 <style>
@@ -57,8 +57,11 @@
 </svelte:head>
 
 <div class="content">
-	{post}
 	<h2 class="content__ttl">{post.title}</h2>
 	<p class="content__updatedAt">{post.updatedAt}</p>
-	{@html post.html[0].html}
+	{#if post.html[0].html}
+		{@html post.html[0].html}
+	{:else if post.html[0].richeditor}
+		{@html post.html[0].richeditor}
+	{/if}
 </div>
