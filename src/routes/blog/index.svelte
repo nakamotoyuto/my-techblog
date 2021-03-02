@@ -17,6 +17,14 @@
   li {
 		list-style: none;
 	}
+
+  .blog{
+    margin-bottom: 15px;
+  }
+
+  .blog:last-of-type{
+    margin-bottom: 0;
+  }
 </style>
 
 <svelte:head>
@@ -24,21 +32,23 @@
 </svelte:head>
 
 <h1>Recent posts</h1>
-<ul>
+<ul class="blogList">
   {#each contents as content}
-    <li><a rel="prefetch" href="blog/{content.id}">
-      <div class="card-container">
-        <Card style="width: 320px;">
-          <Media class="card-media-16x9" aspectRatio="16x9">
-            <MediaContent>
-              <h2 class="mdc-typography--headline6" style="color: #fff; position: absolute; bottom: 16px; left: 16px; margin: 0;">A card with 16x9 media.</h2>
-            </MediaContent>
-          </Media>
-          <Content style="color: #888;">
-            <h3>{content.title}</h3>
-          </Content>
-        </Card>
-      </div>
-      </a></li>
+    <li class="blog">
+      <a rel="prefetch" href="blog/{content.id}">
+        <div class="card-container">
+          <Card style="width: 320px;">
+            <Media class="card-media-16x9" aspectRatio="16x9">
+              <MediaContent>
+                <h2 class="mdc-typography--headline6" style="color: #fff; position: absolute; bottom: 16px; left: 16px; margin: 0;">A card with 16x9 media.</h2>
+              </MediaContent>
+            </Media>
+            <Content style="color: #888;">
+              <h3>{content.title}</h3>
+            </Content>
+          </Card>
+        </div>
+      </a>
+    </li>
   {/each}
 </ul>

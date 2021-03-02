@@ -31,6 +31,13 @@
   .subTitle{
     text-align: center;
   }
+  .blog{
+    margin-bottom: 15px;
+  }
+
+  .blog:last-of-type{
+    margin-bottom: 0;
+  }
 </style>
 
 <svelte:head>
@@ -38,20 +45,22 @@
 </svelte:head>
 
 <h2 class="subTitle">新着記事一覧</h2>
-<ul>
+<ul class="blogList">
   {#each contents as content}
-    <li><a rel="prefetch" href="blog/{content.id}">
-      <div class="card-container">
-        <Card>
-          <Content  style="color: #888;">
-            <div class="card__content">
-              <img class="card__img" src="https://i.gzn.jp/img/2018/01/15/google-gorilla-ban/00.jpg" alt="記事タイトル"/>
-              <h3>{content.title}</h3>
-              <time>{content.createdAt}</time>
-            </div>
-          </Content>
-        </Card>
-      </div>
-      </a></li>
+    <li class="blog">
+      <a rel="prefetch" href="blog/{content.id}">
+        <div class="card-container">
+          <Card>
+            <Content  style="color: #888;">
+              <div class="card__content">
+                <img class="card__img" src="https://i.gzn.jp/img/2018/01/15/google-gorilla-ban/00.jpg" alt="記事タイトル"/>
+                <h3>{content.title}</h3>
+                <time>{content.createdAt}</time>
+              </div>
+            </Content>
+          </Card>
+        </div>
+      </a>
+    </li>
   {/each}
 </ul>
