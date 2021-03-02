@@ -9,8 +9,15 @@
     margin: 0;
   }
 
+	.titleLink{
+		text-decoration: none;
+	}
 </style>
 
 <header>
-	<h1>my techblog</h1>
+	<h1>
+		<a class="titleLink" href="/">
+			my techblog
+		</a>
+	</h1>
 </header>
