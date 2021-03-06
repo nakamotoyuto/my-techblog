@@ -20,9 +20,7 @@
 		all elements inside .content
 	*/
 	.content{
-		padding: 40px 20px;
-		margin: 40px auto;
-    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+		padding: 0;
 	}
 	.content :global(h2) {
 		font-size: 1.4em;
@@ -54,6 +52,13 @@
 		padding-bottom: 10px;
 		font-size: 27px;
 		border-bottom:1px solid black;
+	}
+	@media screen and (min-width: 768px) {
+		.content{
+			padding: 40px 20px;
+			margin: 40px auto;
+			box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+		}
 	}
 </style>
 
