@@ -28,15 +28,30 @@
     margin-right: 15px;
     width: 20%
   }
+  .card__rightBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .card__date{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
   .subTitle{
     text-align: center;
   }
   .blog{
     margin-bottom: 15px;
   }
-
   .blog:last-of-type{
     margin-bottom: 0;
+  }
+  @media screen and (min-width: 768px) {
+		.card__rightBox{
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 </style>
 
@@ -54,8 +69,10 @@
             <Content  style="color: #888;">
               <div class="card__content">
                 <img class="card__img" src="https://i.gzn.jp/img/2018/01/15/google-gorilla-ban/00.jpg" alt="記事タイトル"/>
-                <h3>{content.title}</h3>
-                <time>{content.createdAt}</time>
+                <div class="card__rightBox">
+                  <h3 class="card__title">{content.title}</h3>
+                  <time class="card__date">{content.createdAt}</time>
+                </div>
               </div>
             </Content>
           </Card>
