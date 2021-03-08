@@ -6,7 +6,10 @@
 </script>
 
 <script lang="ts">
+import { element } from 'svelte/internal';
+
   export let contents: { id: string; title: string, createdAt: string,html: HTMLElement }[];
+
 </script>
 
 <style lang="scss">
@@ -59,7 +62,7 @@
   <title>Blog</title>
 </svelte:head>
 
-<h2 class="subTitle">新着記事一覧</h2>
+<h2 class="subTitle">記事一覧</h2>
 <ul class="blogList">
   {#each contents as content}
     <li class="blog">
@@ -71,7 +74,7 @@
                 <img class="card__img" src="https://i.gzn.jp/img/2018/01/15/google-gorilla-ban/00.jpg" alt="記事タイトル"/>
                 <div class="card__rightBox">
                   <h3 class="card__title">{content.title}</h3>
-                  <time class="card__date">{content.createdAt}</time>
+                  <time class="card__date">{new Date(content.createdAt).toLocaleDateString()}</time>
                 </div>
               </div>
             </Content>
