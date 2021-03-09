@@ -68,7 +68,7 @@
 
 <div class="content">
 	<h2 class="content__ttl">{post.title}</h2>
-	<p class="content__updatedAt">{post.updatedAt}</p>
+	<p class="content__updatedAt">更新日：{new Date(post.updatedAt).toLocaleDateString()}</p>
 	{#if post.html[0].html}
 		{@html post.html[0].html}
 	{:else if post.html[0].richeditor}

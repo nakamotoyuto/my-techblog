@@ -8,7 +8,7 @@
 <script lang="ts">
 import { element } from 'svelte/internal';
 
-  export let contents: { id: string; title: string, createdAt: string,html: HTMLElement }[];
+  export let contents: { id: string; title: string, createdAt: string,html: HTMLElement, image: {url: string} }[];
 
 </script>
 
@@ -29,12 +29,15 @@ import { element } from 'svelte/internal';
   }
   .card__img{
     margin-right: 15px;
-    width: 20%
+    width: 20%;
+    height: auto;
+    object-fit:cover;
   }
   .card__rightBox{
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
   }
   .card__date{
     display: flex;
@@ -71,7 +74,7 @@ import { element } from 'svelte/internal';
           <Card>
             <Content  style="color: #888;">
               <div class="card__content">
-                <img class="card__img" src="https://i.gzn.jp/img/2018/01/15/google-gorilla-ban/00.jpg" alt="記事タイトル"/>
+                <img class="card__img" src={content.image.url} alt="記事タイトル"/>
                 <div class="card__rightBox">
                   <h3 class="card__title">{content.title}</h3>
                   <time class="card__date">{new Date(content.createdAt).toLocaleDateString()}</time>
