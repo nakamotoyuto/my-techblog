@@ -7,7 +7,19 @@
 </script>
 
 <script lang="ts">
+	import hljs from 'highlight.js';
   export let post: { id: string; title: string, updatedAt: string, html: HTMLElement };
+
+	const	action =(node: HTMLElement)=>{
+		const oldHtml = node
+		const codeBlock = oldHtml.querySelectorAll('pre code')
+		codeBlock.forEach(element => {
+			const result = hljs.highlightAuto(element.textContent);
+			element.textContent = ''
+			element.insertAdjacentHTML('afterbegin', result.value)
+			element.classList.add('hljs')
+		});
+	}
 </script>
 
 <style>
@@ -28,7 +40,7 @@
 	}
 
 	.content :global(pre) {
-		background-color: #f9f9f9;
+		background: #282c34;
 		box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
 		padding: 0.5em;
 		border-radius: 2px;
@@ -64,14 +76,17 @@
 
 <svelte:head>
 	<title>mytechblog|{post.title}</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/atom-one-dark.min.css">
 </svelte:head>
 
 <div class="content">
 	<h2 class="content__ttl">{post.title}</h2>
 	<p class="content__updatedAt">更新日：{new Date(post.updatedAt).toLocaleDateString()}</p>
-	{#if post.html[0].html}
-		{@html post.html[0].html}
-	{:else if post.html[0].richeditor}
-		{@html post.html[0].richeditor}
-	{/if}
+	<div use:action>
+		{#if post.html[0].html}
+			{@html post.html[0].html}
+		{:else if post.html[0].richeditor}
+			{@html post.html[0].richeditor}
+		{/if}
+	</div>
 </div>
