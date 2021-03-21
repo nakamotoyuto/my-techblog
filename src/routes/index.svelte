@@ -62,7 +62,7 @@ import { element } from 'svelte/internal';
 </style>
 
 <svelte:head>
-  <title>Blog</title>
+  <title>my techblog</title>
 </svelte:head>
 
 <h2 class="subTitle">記事一覧</h2>
