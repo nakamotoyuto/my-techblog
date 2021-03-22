@@ -1,6 +1,6 @@
 <style>
 	header {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
+		border-bottom: 1px solid #ccc;
 		font-weight: 300;
 		padding: 1em;
 	}
