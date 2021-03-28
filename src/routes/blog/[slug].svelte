@@ -75,7 +75,7 @@
 </style>
 
 <svelte:head>
-	<title>mytechblog|{post.title}</title>
+	<title>ny paper memo|{post.title}</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/atom-one-dark.min.css">
 </svelte:head>
 

@@ -17,7 +17,7 @@
 <header>
 	<h1>
 		<a class="titleLink" href="/">
-			my techblog
+			ny paper memo
 		</a>
 	</h1>
 </header>
