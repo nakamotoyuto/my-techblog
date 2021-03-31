@@ -70,7 +70,7 @@ import { element } from 'svelte/internal';
   {#each contents as content}
     <li class="blog">
       <a rel="prefetch" href="blog/{content.id}">
-        <div class="card-container">
+        <div class="cardContainer">
           <Card>
             <Content  style="color: #888;">
               <div class="card__content">
